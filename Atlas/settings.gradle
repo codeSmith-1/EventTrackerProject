@@ -1,0 +1,3 @@
+rootProject.name = 'Atlas'
+
+includeFlat 'AtlasJPA'
