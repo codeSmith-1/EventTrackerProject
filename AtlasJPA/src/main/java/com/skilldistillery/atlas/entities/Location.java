@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 public class Location {
 
@@ -17,13 +18,15 @@ public class Location {
 	private String country;
 	private String city;
 	private String image;
-	private LocalDate arrivalDate;
-	private LocalDate departureDate;
+	private double lattitude;
+	private double longitude;
 	
 		
 	public Location() {
 		super();
 	}
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -37,9 +40,52 @@ public class Location {
 		this.country = country;
 	}
 	
+	
+	
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+
+	public double getLattitude() {
+		return lattitude;
+	}
+
+
+	public void setLattitude(double lattitude) {
+		this.lattitude = lattitude;
+	}
+
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", country=" + country + "]";
+		return "Location [id=" + id + ", country=" + country + ", city=" + city + ", image=" + image + ", lattitude="
+				+ lattitude + ", longitude=" + longitude + "]";
 	}
 	
 	@Override
