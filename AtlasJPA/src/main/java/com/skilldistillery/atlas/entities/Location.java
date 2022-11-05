@@ -1,12 +1,15 @@
 package com.skilldistillery.atlas.entities;
 
-import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Location {
@@ -21,11 +24,11 @@ public class Location {
 	private double lattitude;
 	private double longitude;
 	
-		
-	public Location() {
-		super();
-	}
+	@JsonIgnore
+	@OneToMany(mappedBy = "location")
+	private List<Visit> visits;
 	
+	public Location() {	}
 	
 	public int getId() {
 		return id;
@@ -39,8 +42,6 @@ public class Location {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
-	
 	
 	public String getCity() {
 		return city;

@@ -10,6 +10,7 @@
 
 		<!-- entities -->
 		<class>com.skilldistillery.atlas.entities.Location</class>
+		<class>com.skilldistillery.atlas.entities.Visit</class>
 
 
 		<!-- end entities -->

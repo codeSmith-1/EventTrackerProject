@@ -26,8 +26,7 @@ public class LocationServiceImpl implements LocationService {
 
 	@Override
 	public Location createLocation(Location location) {
-		locRepo.saveAndFlush(location);
-		return location;
+		return locRepo.saveAndFlush(location);
 	}
 
 	@Override
@@ -44,6 +43,7 @@ public class LocationServiceImpl implements LocationService {
 	public Location updateLocation(int id, Location location) {
 		Location update = locRepo.queryById(id);
 		if (update != null) {
+			update.setCountry(location.getCountry());
 			update.setCity(location.getCity());
 			update.setImage(location.getImage());
 			update.setLattitude(location.getLattitude());
