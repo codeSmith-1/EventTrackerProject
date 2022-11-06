@@ -6,4 +6,5 @@ import com.skilldistillery.atlas.entities.Location;
 
 public interface LocationRepository extends JpaRepository<Location, Integer>{
 	Location queryById(int id);
+	
 }

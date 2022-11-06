@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Location {
@@ -24,12 +24,21 @@ public class Location {
 	private double lattitude;
 	private double longitude;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"location"})
 	@OneToMany(mappedBy = "location")
 	private List<Visit> visits;
 	
+	
 	public Location() {	}
 	
+	public List<Visit> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<Visit> visits) {
+		this.visits = visits;
+	}
+
 	public int getId() {
 		return id;
 	}

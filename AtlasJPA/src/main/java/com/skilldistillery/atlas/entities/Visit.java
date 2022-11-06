@@ -1,6 +1,7 @@
 package com.skilldistillery.atlas.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Visit {
@@ -17,22 +21,34 @@ public class Visit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "arrival_date")
 	private LocalDate arrivalDate;
-	
+
 	@Column(name = "departure_date")
 	private LocalDate departureDate;
-	
+
 	private String note;
-	
+
 	private String photo;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "location_id")
 	private Location location;
 
+	@OneToMany(mappedBy = "visit")
+	@JsonIgnoreProperties({ "visit" })
+	private List<VisitComment> visitComment;
+
 	public Visit() {
+	}
+
+	public List<VisitComment> getVisitComment() {
+		return visitComment;
+	}
+
+	public void setVisitComment(List<VisitComment> visitComment) {
+		this.visitComment = visitComment;
 	}
 
 	public int getId() {

@@ -11,6 +11,7 @@
 		<!-- entities -->
 		<class>com.skilldistillery.atlas.entities.Location</class>
 		<class>com.skilldistillery.atlas.entities.Visit</class>
+		<class>com.skilldistillery.atlas.entities.VisitComment</class>
 
 
 		<!-- end entities -->

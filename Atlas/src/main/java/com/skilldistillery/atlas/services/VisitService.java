@@ -7,8 +7,9 @@ import com.skilldistillery.atlas.entities.Visit;
 public interface VisitService {
 	public Visit showVisit(int id);
 	public List<Visit> showVisits();
-	public Visit createVisit(Visit visit);
-	public Visit updateVisit(Visit visit, int id);
+	public Visit updateVisit(Visit visit, int lid, int vid);
 	public boolean deleteVisit(int id);
+	public Visit addVisitToLocation(int id, Visit visit);
 	
+	List<Visit> findVisitsByLocationId(int id);
 }

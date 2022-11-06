@@ -25,12 +25,12 @@ public class LocationController {
 	@Autowired
 	private LocationService locSvc;
 
-	@GetMapping("atlas")
+	@GetMapping("locations")
 	public List<Location> listLocations() {
 		return locSvc.listAllLocations();
 	}
 
-	@PostMapping("atlas")
+	@PostMapping("locations")
 	public Location createLocation(@RequestBody Location location, HttpServletRequest req, HttpServletResponse res) {
 		try {
 			location = locSvc.createLocation(location);
@@ -47,7 +47,7 @@ public class LocationController {
 		return location;
 	}
 
-	@GetMapping("atlas/{id}")
+	@GetMapping("locations/{id}")
 	public Location showLocation(@PathVariable int id, HttpServletResponse res) {
 		Location loc = locSvc.showLocation(id);
 		if (loc != null) {
@@ -58,7 +58,7 @@ public class LocationController {
 		return loc;
 	}
 
-	@DeleteMapping("atlas/{id}")
+	@DeleteMapping("locations/{id}")
 	public void deleteLocation(@PathVariable int id, HttpServletResponse res) {
 		try {
 			if (locSvc.deleteLocation(id)) {
@@ -72,7 +72,7 @@ public class LocationController {
 		}
 	}
 	
-	@PutMapping("atlas/{id}")
+	@PutMapping("locations/{id}")
 	public Location updateLocation(@PathVariable int id, @RequestBody Location loc, HttpServletResponse res) {
 		try {
 			loc = locSvc.updateLocation(id, loc);
