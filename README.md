@@ -19,4 +19,3 @@ The program is written in Java and utilizes Spring Boot, REST Services, and MySQ
 | Create   | POST      | `/api/locations/{id}/visits`		| JSON for new visit     | JSON of created visit			    |
 | Update   | PUT       | `/api/locations/{id}/visits/{id}`	| JSON to update visit   | JSON of updated visit        	    |
 | Delete   | DELETE    | `/api/visits/{id}`			| JSON to delete visit   | 204 (no content) 					|
-|------------------------------------------------------------------------------------------------------------	|
