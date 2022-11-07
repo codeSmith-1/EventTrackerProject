@@ -119,7 +119,7 @@ public class Visit {
 	@Override
 	public String toString() {
 		return "Visit [id=" + id + ", arrivalDate=" + arrivalDate + ", departureDate=" + departureDate + ", note="
-				+ note + ", photo=" + photo + ", location=" + location + "]";
+				+ note + ", photo=" + photo;
 	}
 
 }

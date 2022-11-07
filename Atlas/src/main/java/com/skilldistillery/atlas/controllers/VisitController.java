@@ -75,10 +75,15 @@ public class VisitController {
 	
 	@DeleteMapping("locations/{id}/visits/{vid}")
 	public void deleteVisit(@PathVariable int id, int vid, HttpServletResponse res) {
-		if (vSvc.deleteVisit(vid)) {
-			res.setStatus(204);
-		} else {
-			res.setStatus(404);
+		try {
+			if (vSvc.deleteVisit(vid)) {
+				res.setStatus(204);
+			} else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			res.setStatus(400);
+			e.printStackTrace();
 		}
 	}
 }

@@ -3,11 +3,13 @@ package com.skilldistillery.atlas.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.atlas.entities.Visit;
 import com.skilldistillery.atlas.entities.VisitComment;
 import com.skilldistillery.atlas.repositories.VisitCommentRepository;
 
+@Service
 public class VisitCommentServiceImpl implements VisitCommentService {
 
 	@Autowired
@@ -44,12 +46,12 @@ public class VisitCommentServiceImpl implements VisitCommentService {
 
 
 	@Override
-	public VisitComment updateVisitComment(VisitComment vc, int vcid) {
+	public VisitComment updateVisitComment(VisitComment vc, int vcid, int vid) {
 		VisitComment vComm = vcr.queryById(vcid);
 		if (vComm != null) {
 			vComm.setComment(vc.getComment());
 			vComm.setDate(vc.getDate());
-			vComm.setVisit(vc.getVisit());
+			vComm.setVisit(vSvc.showVisit(vid));
 			vcr.saveAndFlush(vComm);
 			return vComm;
 		}

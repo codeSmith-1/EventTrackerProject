@@ -8,6 +8,6 @@ public interface VisitCommentService {
 	public List<VisitComment> findVisitsCommentsByVisitId(int id);
 	public VisitComment createVisitCommentForVisit(VisitComment vc, int id);
 	public boolean deleteVisitComment(int id);
-	public VisitComment updateVisitComment(VisitComment vc, int vcid);
+	public VisitComment updateVisitComment(VisitComment vc, int vcid, int vid);
 	
 }

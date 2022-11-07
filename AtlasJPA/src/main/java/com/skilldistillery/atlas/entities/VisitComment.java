@@ -33,7 +33,7 @@ public class VisitComment {
 
 	@Override
 	public String toString() {
-		return "VisitComment [id=" + id + ", comment=" + comment + ", date=" + date + ", visit=" + visit + "]";
+		return "VisitComment [id=" + id + ", comment=" + comment + ", date=" + date;
 	}
 
 	@Override
