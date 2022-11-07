@@ -14,11 +14,12 @@ The program is written in Java and utilizes Spring Boot, REST Services, and MySQ
 | Read     | GET       | `/api/locations/{id}`   	    |                        | View single location            	|
 | Create   | POST      | `/api/locations`  			| JSON for new location  | JSON of created location			|
 | Update   | PUT       | `/api/locations/{id}` 			| JSON to update location| JSON of updated location        	|
-| Delete   | DELETE    | `/api/locations/{id}`			| JSON to delete location| 204 (no content) 					|	
-|------------------------------------------------------------------------------------------------------------	|
+| Delete   | DELETE    | `/api/locations/{id}`			| JSON to delete location| 204 (no content) 					|
+|---------------------------------------------------------------------------------------------|
 
+| CRUD Op. | HTTP Verb | URI                   	| Request Body           | Response Body                   	|
 | Read     | GET       | `/api/locations/{id}/visits`   	|                        | List of all visits	           	|
 | Create   | POST      | `/api/locations/{id}/visits`		| JSON for new visit     | JSON of created visit			    |
 | Update   | PUT       | `/api/locations/{id}/visits/{id}`	| JSON to update visit   | JSON of updated visit        	    |
-| Delete   | DELETE    | `/api/visits/{id}`			| JSON to delete visit   | 204 (no content) 					|	
+| Delete   | DELETE    | `/api/visits/{id}`			| JSON to delete visit   | 204 (no content) 					|
 |------------------------------------------------------------------------------------------------------------	|
