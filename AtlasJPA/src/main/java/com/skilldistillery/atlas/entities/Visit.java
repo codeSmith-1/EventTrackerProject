@@ -39,6 +39,10 @@ public class Visit {
 	@OneToMany(mappedBy = "visit")
 	@JsonIgnoreProperties({ "visit" })
 	private List<VisitComment> visitComment;
+	
+	@OneToMany(mappedBy = "visit")
+	@JsonIgnoreProperties({ "visit" })
+	private List<Photo> photos;
 
 	public Visit() {
 	}
