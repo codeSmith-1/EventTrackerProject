@@ -19,7 +19,7 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/traveldb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
+				value="jdbc:mysql://localhost:3306/atlasdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
 			<property name="javax.persistence.jdbc.user"
 				value="traveler" />
 			<property name="javax.persistence.jdbc.password" value="traveler" />

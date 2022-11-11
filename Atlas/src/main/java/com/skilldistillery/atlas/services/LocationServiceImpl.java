@@ -46,7 +46,7 @@ public class LocationServiceImpl implements LocationService {
 			update.setCountry(location.getCountry());
 			update.setCity(location.getCity());
 			update.setImage(location.getImage());
-			update.setLattitude(location.getLattitude());
+			update.setLatitude(location.getLatitude());
 			update.setLongitude(location.getLongitude());
 			locRepo.saveAndFlush(update);
 		}

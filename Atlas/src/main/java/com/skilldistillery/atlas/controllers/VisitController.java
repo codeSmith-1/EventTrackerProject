@@ -46,6 +46,7 @@ public class VisitController {
 		if(visits == null) {
 			res.setStatus(404);
 		}
+		res.setStatus(200);
 		return visits;
 	}
 	

@@ -72,13 +72,13 @@ public class Location {
 	}
 
 
-	public double getLattitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
 
-	public void setLattitude(double lattitude) {
-		this.latitude = lattitude;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
 
@@ -94,7 +94,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", country=" + country + ", city=" + city + ", image=" + image + ", lattitude="
+		return "Location [id=" + id + ", country=" + country + ", city=" + city + ", image=" + image + ", latitude="
 				+ latitude + ", longitude=" + longitude + "]";
 	}
 	
