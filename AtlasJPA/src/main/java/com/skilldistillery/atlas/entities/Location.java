@@ -21,7 +21,7 @@ public class Location {
 	private String country;
 	private String city;
 	private String image;
-	private double lattitude;
+	private double latitude;
 	private double longitude;
 	
 	@JsonIgnoreProperties({"location"})
@@ -73,12 +73,12 @@ public class Location {
 
 
 	public double getLattitude() {
-		return lattitude;
+		return latitude;
 	}
 
 
 	public void setLattitude(double lattitude) {
-		this.lattitude = lattitude;
+		this.latitude = lattitude;
 	}
 
 
@@ -95,7 +95,7 @@ public class Location {
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", country=" + country + ", city=" + city + ", image=" + image + ", lattitude="
-				+ lattitude + ", longitude=" + longitude + "]";
+				+ latitude + ", longitude=" + longitude + "]";
 	}
 	
 	@Override

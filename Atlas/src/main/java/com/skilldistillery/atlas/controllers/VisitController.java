@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.atlas.entities.Photo;
 import com.skilldistillery.atlas.entities.Visit;
+import com.skilldistillery.atlas.services.PhotoService;
 import com.skilldistillery.atlas.services.VisitService;
 
 @RequestMapping("api")
@@ -24,6 +26,9 @@ public class VisitController {
 
 	@Autowired
 	private VisitService vSvc;
+	
+	@Autowired
+	private PhotoService pSvc;
 
 	@GetMapping("visits")
 	public List<Visit> showAll() {
@@ -74,7 +79,7 @@ public class VisitController {
 	}
 	
 	@DeleteMapping("locations/{id}/visits/{vid}")
-	public void deleteVisit(@PathVariable int id, int vid, HttpServletResponse res) {
+	public void deleteVisit(@PathVariable int id, @PathVariable int vid, HttpServletResponse res) {
 		try {
 			if (vSvc.deleteVisit(vid)) {
 				res.setStatus(204);
@@ -86,4 +91,6 @@ public class VisitController {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

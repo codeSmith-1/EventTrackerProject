@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.atlas.entities.Photo;
+import com.skilldistillery.atlas.entities.Visit;
 import com.skilldistillery.atlas.repositories.PhotoRepository;
 import com.skilldistillery.atlas.repositories.VisitRepository;
 @Service
@@ -17,14 +18,23 @@ public class PhotoServiceImpl implements PhotoService {
 	private VisitRepository vRepo;
 
 	@Override
-	public Photo addPhoto(int vid, int pid) {
-		// TODO Auto-generated method stub
+	public Photo addPhoto(int vid, Photo photo) {
+		Visit vis = vRepo.queryById(vid);
+		if (photo != null) {
+			photo.setVisit(vis);
+			pRepo.saveAndFlush(photo);
+			return photo;
+		}
 		return null;
 	}
 
 	@Override
 	public boolean deletePhoto(int pid, int vid) {
-		// TODO Auto-generated method stub
+		Photo photo = pRepo.queryById(pid);
+		if (photo != null) {
+			pRepo.delete(photo);
+			return true;
+		}
 		return false;
 	}
 

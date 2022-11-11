@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Atlas Travel Log</title>
+<script type="text/javascript" src="js/locations.js"></script>
+</head>
+<body>
+  <h1>Welcome to Tate's Atlas</h1>
+
+  <form name="locationForm">
+    <input type="number" name="locationId">
+    <button name="lookup">Search by Id</button>
+    <br><br>
+  </form>
+  
+  <form name="addLocation">
+  	Country: <input type="text" name="country"><br>
+  	City: <input type="text" name="city"><br>
+  	Image:<input type="number" name="image"><br>
+  	Latitude: <input type="text" name="latitude"><br>
+  	Longitude: <input type="number" name="longitude"><br>
+  	<button type="submit" name="submitLocation"> Add Location </button>
+  </form>
+    <div id="locationData"></div>
+
+</body>
+</html>
