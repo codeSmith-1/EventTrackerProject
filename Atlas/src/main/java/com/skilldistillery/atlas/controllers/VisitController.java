@@ -35,7 +35,7 @@ public class VisitController {
 		return vSvc.showVisits();
 	}
 
-//	@GetMapping("locations/{id}/vists")
+//	@GetMapping("locations/{id}/visits")
 //	public Visit showVisit(@PathVariable int id, HttpServletResponse res) {
 //		return vSvc.showVisit(id);
 //	}
@@ -67,7 +67,7 @@ public class VisitController {
 		return vis;
 	} 
 	
-	@PutMapping("locations/{lid}/visits/{vid}")
+	@PutMapping("visits/{vid}")
 	public Visit updateVisit(@RequestBody Visit visit, @PathVariable int vid, @PathVariable int lid, HttpServletResponse res) {
 		try {
 			visit = vSvc.updateVisit(visit, lid, vid);
@@ -79,7 +79,7 @@ public class VisitController {
 		return visit;
 	}
 	
-	@DeleteMapping("locations/{id}/visits/{vid}")
+	@DeleteMapping("visits/{vid}")
 	public void deleteVisit(@PathVariable int id, @PathVariable int vid, HttpServletResponse res) {
 		try {
 			if (vSvc.deleteVisit(vid)) {
