@@ -68,9 +68,10 @@ public class VisitController {
 	} 
 	
 	@PutMapping("visits/{vid}")
-	public Visit updateVisit(@RequestBody Visit visit, @PathVariable int vid, @PathVariable int lid, HttpServletResponse res) {
+	public Visit updateVisit(@RequestBody Visit visit, @PathVariable int vid, HttpServletResponse res) {
 		try {
-			visit = vSvc.updateVisit(visit, lid, vid);
+			visit = vSvc.updateVisit(visit, vid);
+			res.setStatus(201);
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);

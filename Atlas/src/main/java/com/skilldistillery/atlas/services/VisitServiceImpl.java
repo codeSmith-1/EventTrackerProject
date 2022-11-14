@@ -39,15 +39,15 @@ public class VisitServiceImpl implements VisitService {
 //	}
 
 	@Override
-	public Visit updateVisit(Visit visit, int lid, int vid) {
+	public Visit updateVisit(Visit visit, int vid) {
 		Visit update = vRepo.queryById(vid);
+		Location location = update.getLocation();
 		if (update != null) {
 			update.setDepartureDate(visit.getDepartureDate());
-			update.setLocation(visit.getLocation());
 			update.setNote(visit.getNote());
-			update.setPhoto(visit.getNote());
+			update.setPhoto(visit.getPhoto());
 			update.setArrivalDate(visit.getArrivalDate());
-			update.setLocation(lRepo.queryById(lid));
+			update.setLocation(location);
 			vRepo.saveAndFlush(update);
 		}
 		return update;
