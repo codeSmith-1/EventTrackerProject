@@ -91,6 +91,7 @@ function displayLocation(location) {
 function countLocations(locations) {
 	let countDiv = document.getElementById('countDiv');
 	let p = document.createElement('p');
+	console.log('locations ' + locations);
 	p.textContent = "Total locations visited: " + locations.length;
 	countDiv.appendChild(p);
 }
