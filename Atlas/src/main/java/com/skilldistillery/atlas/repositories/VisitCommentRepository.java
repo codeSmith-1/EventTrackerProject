@@ -9,4 +9,5 @@ import com.skilldistillery.atlas.entities.VisitComment;
 public interface VisitCommentRepository extends JpaRepository<VisitComment, Integer>{
 	public VisitComment queryById(int id);
 	public List<VisitComment> findByVisitId(int id);
+	
 }

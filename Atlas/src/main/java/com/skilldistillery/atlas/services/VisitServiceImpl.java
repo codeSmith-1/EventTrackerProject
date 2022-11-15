@@ -6,18 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.atlas.entities.Location;
+import com.skilldistillery.atlas.entities.Photos;
 import com.skilldistillery.atlas.entities.Visit;
+import com.skilldistillery.atlas.entities.VisitComment;
 import com.skilldistillery.atlas.repositories.LocationRepository;
+import com.skilldistillery.atlas.repositories.PhotoRepository;
+import com.skilldistillery.atlas.repositories.VisitCommentRepository;
 import com.skilldistillery.atlas.repositories.VisitRepository;
 
 @Service
 public class VisitServiceImpl implements VisitService {
-	
+
 	@Autowired
 	private VisitRepository vRepo;
-	
-	@Autowired 
+
+	@Autowired
 	private LocationRepository lRepo;
+
+	@Autowired
+	private VisitCommentRepository VcRepo;
+
+	@Autowired
+	private PhotoRepository pRepo;
 
 	@Override
 	public Visit showVisit(int id) {
@@ -54,9 +64,23 @@ public class VisitServiceImpl implements VisitService {
 	}
 
 	@Override
-	public boolean deleteVisit(int id) {
-		Visit v = vRepo.queryById(id);
+	public boolean deleteVisit(int vid) {
+		Visit v = vRepo.queryById(vid);
+
 		if (v != null) {
+			if (v.getVisitComment().size() > 0) {
+				List<VisitComment> visitComments = v.getVisitComment();
+				for (VisitComment visitComment : visitComments) {
+					VcRepo.delete(visitComment);
+				}
+			}
+			if (v.getPhotos() != null) {
+				List<Photos> photos = v.getPhotos();
+				for (Photos photo : photos) {
+					pRepo.delete(photo);
+				}
+			}
+
 			vRepo.delete(v);
 			return true;
 		}

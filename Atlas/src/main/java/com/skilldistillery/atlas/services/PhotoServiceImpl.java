@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.atlas.entities.Photo;
+import com.skilldistillery.atlas.entities.Photos;
 import com.skilldistillery.atlas.entities.Visit;
 import com.skilldistillery.atlas.repositories.PhotoRepository;
 import com.skilldistillery.atlas.repositories.VisitRepository;
@@ -18,7 +18,7 @@ public class PhotoServiceImpl implements PhotoService {
 	private VisitRepository vRepo;
 
 	@Override
-	public Photo addPhoto(int vid, Photo photo) {
+	public Photos addPhoto(int vid, Photos photo) {
 		Visit vis = vRepo.queryById(vid);
 		if (photo != null) {
 			photo.setVisit(vis);
@@ -30,7 +30,7 @@ public class PhotoServiceImpl implements PhotoService {
 
 	@Override
 	public boolean deletePhoto(int pid, int vid) {
-		Photo photo = pRepo.queryById(pid);
+		Photos photo = pRepo.queryById(pid);
 		if (photo != null) {
 			pRepo.delete(photo);
 			return true;
@@ -39,8 +39,8 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public Photo updatePhoto(Photo photo, int vid, int pid) {
-		Photo update = pRepo.queryById(pid);
+	public Photos updatePhoto(Photos photo, int vid, int pid) {
+		Photos update = pRepo.queryById(pid);
 		if (update != null) {
 			update.setDescription(photo.getDescription());
 			update.setPhoto(photo.getPhoto());
@@ -52,12 +52,12 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public List<Photo> findAllPhotosForVisit(int vid) {
+	public List<Photos> findAllPhotosForVisit(int vid) {
 		return pRepo.findByVisitId(vid);
 	}
 
 	@Override
-	public Photo showPhoto(int id) {
+	public Photos showPhoto(int id) {
 		return pRepo.queryById(id);
 	}
 

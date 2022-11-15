@@ -12,7 +12,7 @@
 		<class>com.skilldistillery.atlas.entities.Location</class>
 		<class>com.skilldistillery.atlas.entities.Visit</class>
 		<class>com.skilldistillery.atlas.entities.VisitComment</class>
-		<class>com.skilldistillery.atlas.entities.Photo</class>
+		<class>com.skilldistillery.atlas.entities.Photos</class>
 
 
 		<!-- end entities -->

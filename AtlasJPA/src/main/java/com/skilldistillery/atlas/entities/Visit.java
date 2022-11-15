@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -42,7 +45,7 @@ public class Visit {
 	
 	@OneToMany(mappedBy = "visit")
 	@JsonIgnoreProperties({ "visit" })
-	private List<Photo> photos;
+	private List<Photos> photos;
 
 	public Visit() {
 	}
@@ -101,6 +104,14 @@ public class Visit {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public List<Photos> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photos> photos) {
+		this.photos = photos;
 	}
 
 	@Override

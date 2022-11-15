@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.atlas.entities.Photo;
+import com.skilldistillery.atlas.entities.Photos;
 import com.skilldistillery.atlas.services.PhotoService;
 
 @RestController
@@ -25,8 +25,8 @@ public class PhotoController {
 	private PhotoService pSvc;
 	
 	@GetMapping("locations/{id}/visits/{vid}/photos")
-	public List<Photo> getPhotos(@PathVariable int id, @PathVariable int vid, HttpServletResponse res) {
-		List<Photo> photos = pSvc.findAllPhotosForVisit(vid);
+	public List<Photos> getPhotos(@PathVariable int id, @PathVariable int vid, HttpServletResponse res) {
+		List<Photos> photos = pSvc.findAllPhotosForVisit(vid);
 		if (photos.isEmpty()) {
 			res.setStatus(404);
 			return null;
@@ -51,7 +51,7 @@ public class PhotoController {
 	}
 	
 	@PostMapping("visits/{vid}/photos")
-	public Photo addPhoto(@RequestBody Photo photo, @PathVariable int vid, HttpServletResponse res, HttpServletRequest req) {
+	public Photos addPhoto(@RequestBody Photos photo, @PathVariable int vid, HttpServletResponse res, HttpServletRequest req) {
 		try {
 			photo = pSvc.addPhoto(vid, photo);
 			res.setStatus(201);

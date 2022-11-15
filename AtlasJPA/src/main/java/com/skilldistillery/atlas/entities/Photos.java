@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Photo {
+public class Photos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Photo {
 	@JsonIgnore
 	private Visit visit;
 	
-	public Photo() {
+	public Photos() {
 		super();
 	}
 
@@ -79,7 +79,7 @@ public class Photo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Photo other = (Photo) obj;
+		Photos other = (Photos) obj;
 		return id == other.id;
 	}
 	
