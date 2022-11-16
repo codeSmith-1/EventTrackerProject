@@ -123,15 +123,7 @@ function showLocations(locations) {
 				getVisits(location.id);
 
 			});
-
-			// create location edit and delete
-
-
-
 			tr.appendChild(td);
-
-
-
 			tbody.append(tr);
 		}
 	}
@@ -146,7 +138,6 @@ function getVisits(locationId) {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				let visits = JSON.parse(xhr.responseText);
-
 				showVisits(visits);
 			} else if (xhr.status === 404) {
 				displayError("Visits not found.");
@@ -227,6 +218,7 @@ function showVisits(visits) {
 		editButton.textContent = 'edit visit';
 		card.appendChild(editButton);
 
+		
 		editButton.addEventListener('click', function(e) {
 			let cardDiv = document.getElementById('cardDiv');
 			cardDiv.style.display = 'none';
@@ -257,29 +249,29 @@ function editForm(visit) {
 	let countDiv = document.getElementById('countDiv');
 	countDiv.style.display = 'none';
 	document.addLocation.style.display = 'none';
-	console.log(visit);
+
 	document.editVisitForm.note.value = visit.note;
 	document.editVisitForm.photo.value = visit.photo;
 	document.editVisitForm.arrivalDate.value = visit.arrivalDate;
 	document.editVisitForm.departureDate.value = visit.departureDate;
+	
 	document.editVisitForm.submitEdit.addEventListener('click', function(e) {
 		e.preventDefault();
-		visit = {
+		updatedVisit = {
 			id: visit.id,
 			note: document.editVisitForm.note.value,
 			photo: document.editVisitForm.photo.value,
 			arrivalDate: document.editVisitForm.arrivalDate.value,
 			departureDate: document.editVisitForm.departureDate.value
 		}
-		putVisit(visit);
-	});
+		putVisit(updatedVisit);
+	}, {once:true});
 
 	document.editVisitForm.deleteVisit.addEventListener('click', function(e) {
 		e.preventDefault();
-		let locationId = visit.location['id'];
 		deleteVisit(visit);
 		window.location.reload();
-	});
+	}, {once:true});
 }
 
 function deleteVisit(visit) {
