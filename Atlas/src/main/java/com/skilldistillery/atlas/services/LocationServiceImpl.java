@@ -6,13 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.atlas.entities.Location;
+import com.skilldistillery.atlas.entities.Photos;
+import com.skilldistillery.atlas.entities.Visit;
 import com.skilldistillery.atlas.repositories.LocationRepository;
+import com.skilldistillery.atlas.repositories.VisitRepository;
 
 @Service
 public class LocationServiceImpl implements LocationService {
-	
+
 	@Autowired
 	private LocationRepository locRepo;
+
+	@Autowired
+	private VisitRepository visRepo;
 
 	@Override
 	public List<Location> listAllLocations() {
@@ -33,8 +39,16 @@ public class LocationServiceImpl implements LocationService {
 	public boolean deleteLocation(int id) {
 		Location loc = locRepo.queryById(id);
 		if (loc != null) {
-			locRepo.delete(loc);
-			return true;
+			if (loc.getVisits().size() > 0) {
+				List<Visit> visits = loc.getVisits();
+				for (Visit vis : visits) {
+					visRepo.delete(vis);
+				}
+			}
+			if (loc != null) {
+				locRepo.delete(loc);
+				return true;
+			}
 		}
 		return false;
 	}
