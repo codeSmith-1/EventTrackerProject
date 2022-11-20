@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   locations: Location[] = [];
   closeResult: string = "";
 
-
   constructor(private locationService: LocationService, private modalService: NgbModal, private config: NgbCarouselConfig) {
     config.interval = 8000;
 		config.wrap = false;
@@ -29,8 +28,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loadLocations();
   }
-
-
 
   open(content: any) {
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -54,6 +51,14 @@ export class HomeComponent implements OnInit {
 		}
 	}
 
+  setEditLocation(){
+    this.editLocation = Object.assign({}, this.selected);
+  }
+
+  displayLocations(){
+    this.selected = null;
+    this.loadLocations();
+  }
 
   loadLocations() {
     this.locationService.index().subscribe({

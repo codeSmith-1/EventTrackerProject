@@ -1,12 +1,12 @@
-
+<div class="flex-container flex-start">
 <h1>{{title}}
-</h1>
+<button class="btn btn-outline-primary btn-rounded btn-icon" (click)="open(content)">+</button></h1>
+</div>
 
-
-
+<div *ngIf="!selected">
 <ngb-carousel>
 	<ng-template *ngFor="let loc of locations" ngbSlide>
-		<div class="picsum-img-wrapper">
+		<div (click)="selected = loc" class="picsum-img-wrapper">
 			<img [src]="loc.image"/>
 		</div>
 		<div class="carousel-caption">
@@ -15,9 +15,25 @@
 		</div>
 	</ng-template>
 </ngb-carousel>
+</div>
 
+<div *ngIf="selected">
+  <p>id: {{selected.id}}</p>
+  <p>country: {{selected.country}}</p>
+  <p>city: {{selected.city}}</p>
+  <p>image: {{selected.image}}</p>
+  <button class="btn btn-outline-dark" selected = null; (click)="displayLocations();">Back</button>
+  <button class="btn btn-outline-warning"(click)="setEditLocation();">Edit</button>
+  <button class="btn btn-outline-danger"(click)="deleteLocation(selected.id);">Delete</button>
+</div>
 
-
+<div *ngIf="editLocation">
+  <input type="text" name="task" [(ngModel)]="editLocation.country"><br>
+  <input type="text" name="description" [(ngModel)]="editLocation.city"><br>
+  <input type="text" name="image" [(ngModel)]="editLocation.image"><p></p>
+  <button class="btn btn-danger" (click)="editLocation = null;">Cancel</button>
+  <button class="btn btn-primary" (click)="updateLocation(editLocation);">Save</button>
+</div>
 
 
 <ng-template #content let-modal>
@@ -54,4 +70,3 @@
 	</div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Memory</button>
