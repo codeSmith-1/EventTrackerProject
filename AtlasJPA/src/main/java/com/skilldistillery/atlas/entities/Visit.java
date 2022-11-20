@@ -13,9 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -34,7 +32,8 @@ public class Visit {
 	private String note;
 
 	private String photo;
-
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "location_id")
 	private Location location;

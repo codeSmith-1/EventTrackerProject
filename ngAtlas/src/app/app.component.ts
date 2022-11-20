@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from 'src/app/models/location';
 
 @Component({
   selector: 'app-root',

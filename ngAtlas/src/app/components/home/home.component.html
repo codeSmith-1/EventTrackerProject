@@ -1,1 +1,57 @@
-<p>home works!</p>
+
+<h1>{{title}}
+</h1>
+
+
+
+<ngb-carousel>
+	<ng-template *ngFor="let loc of locations" ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img [src]="loc.image"/>
+		</div>
+		<div class="carousel-caption">
+			<h3>{{loc.city}} {{loc.country}}</h3>
+			<p>This carousel uses customized default values.</p>
+		</div>
+	</ng-template>
+</ngb-carousel>
+
+
+
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">New Memory</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+        <label for="Country">Country</label>
+        <div class="input-group">
+          <div>
+          <input type="text" name="Country" placeholder="Country" [(ngModel)]="newLocation.country">
+          </div>
+        </div>
+          <label for="City">City</label>
+        <div class="input-group">
+        <div>
+          <input type="text" name="City" placeholder="City" [(ngModel)]="newLocation.city">
+        </div>
+        </div>
+        <label for="image">Image</label>
+        <div class="input-group">
+          <div>
+          <input type="img" name="image" placeholder="image"[(ngModel)]="newLocation.image">
+				</div>
+        </div>
+        </div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="addLocation()" (click)="modal.close('Save click')">Save</button>
+	</div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Memory</button>
