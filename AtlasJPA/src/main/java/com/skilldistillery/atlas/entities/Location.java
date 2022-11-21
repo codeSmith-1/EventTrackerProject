@@ -1,8 +1,10 @@
 package com.skilldistillery.atlas.entities;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,11 @@ public class Location {
 	private String image;
 	private double latitude;
 	private double longitude;
+	@Column(name="arrival_date")
+	private LocalDate arrivalDate;
+	@Column(name="departure_date")
+	private LocalDate departureDate;
+	private String note;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "location")
@@ -31,6 +38,65 @@ public class Location {
 	
 	public Location() {	}
 	
+	
+	
+
+
+
+	public String getNote() {
+		return note;
+	}
+
+
+
+
+
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+
+
+
+
+
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
+
+
+
+
+
+
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+
+
+
+
+
+	public LocalDate getDepartureDate() {
+		return departureDate;
+	}
+
+
+
+
+
+
+	public void setDepartureDate(LocalDate departureDate) {
+		this.departureDate = departureDate;
+	}
+
+
+
+
+
+
 	public List<Visit> getVisits() {
 		return visits;
 	}
@@ -95,7 +161,8 @@ public class Location {
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", country=" + country + ", city=" + city + ", image=" + image + ", latitude="
-				+ latitude + ", longitude=" + longitude + "]";
+				+ latitude + ", longitude=" + longitude + ", arrivalDate=" + arrivalDate + ", departureDate="
+				+ departureDate + "]";
 	}
 	
 	@Override

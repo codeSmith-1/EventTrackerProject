@@ -44,8 +44,10 @@ class LocationTest {
 	@Test
 	void test_Location_mapping() {
 		assertNotNull(loc);
-		assertEquals("Vietnam", loc.getCountry());
+		assertEquals("Oregon", loc.getCountry());
 		assertEquals(106.660172, loc.getLongitude());
+		assertEquals("Met my wife here.", loc.getNote());
+//		assertEquals(12, loc.getArrivalDate());
 	}
 
 }

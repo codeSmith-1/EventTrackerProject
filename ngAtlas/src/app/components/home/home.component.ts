@@ -116,6 +116,7 @@ deleteLocation(id: number): void {
     next: (result) => {
       this.newLocation = new Location();
       this.loadLocations();
+      this.selected = null;
     },
     error: (err) => {
       console.error('LocationComponenet.deleteLocation(): error');

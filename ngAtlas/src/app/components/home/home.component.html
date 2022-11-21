@@ -10,8 +10,8 @@
 			<img [src]="loc.image"/>
 		</div>
 		<div class="carousel-caption">
-			<h3>{{loc.city}} {{loc.country}}</h3>
-			<p>This carousel uses customized default values.</p>
+			<h3>{{loc.city}}, {{loc.country}}</h3>
+			<p>{{loc.arrivalDate}} | {{loc.departureDate}}</p>
 		</div>
 	</ng-template>
 </ngb-carousel>
@@ -22,9 +22,9 @@
   <p>country: {{selected.country}}</p>
   <p>city: {{selected.city}}</p>
   <p>image: {{selected.image}}</p>
-  <button class="btn btn-outline-dark" selected = null; (click)="displayLocations();">Back</button>
+  <button class="btn btn-outline-dark" selected = null; editLocation = null; (click)="displayLocations();">Back</button>
   <button class="btn btn-outline-warning"(click)="setEditLocation();">Edit</button>
-  <button class="btn btn-outline-danger"(click)="deleteLocation(selected.id);">Delete</button>
+  <button class="btn btn-outline-danger" (click)="deleteLocation(selected.id)" selected = null;>Delete</button>
 </div>
 
 <div *ngIf="editLocation">
@@ -32,7 +32,7 @@
   <input type="text" name="description" [(ngModel)]="editLocation.city"><br>
   <input type="text" name="image" [(ngModel)]="editLocation.image"><p></p>
   <button class="btn btn-danger" (click)="editLocation = null;">Cancel</button>
-  <button class="btn btn-primary" (click)="updateLocation(editLocation);">Save</button>
+  <button class="btn btn-primary" (click)="updateLocation(editLocation)" editLocation = null;>Save</button>
 </div>
 
 
@@ -61,6 +61,12 @@
           <div>
           <input type="img" name="image" placeholder="image"[(ngModel)]="newLocation.image">
 				</div>
+        </div>
+        <label for="City">Note</label>
+        <div class="input-group">
+        <div>
+          <input type="text" name="note" placeholder="note" [(ngModel)]="newLocation.note">
+        </div>
         </div>
         </div>
 		</form>
